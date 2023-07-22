@@ -9,18 +9,18 @@ import time
 from datetime import date
 import os
 
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
-# dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
 
 chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument('--proxy-server=%s' % PROXY)
+dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
-dr = webdriver.Chrome(options=chrome_options)
+
+
 
 start = time.time()
 
