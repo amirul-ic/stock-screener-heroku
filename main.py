@@ -12,15 +12,13 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 #from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
-#PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
-
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument('--proxy-server=%s' % PROXY)
+# chrome_options.add_argument('--proxy-server=%s' % PROXY)
 
 
 sel_options = {
@@ -54,8 +52,8 @@ import datetime
 frames = []
 
 for link in url:
-    # dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    dr = requests.get(link)
+    dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    #dr = requests.get(link)
     print (dr.text)
     soup = BeautifulSoup(dr.page_source,'lxml')
     tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
@@ -82,7 +80,7 @@ print("The time of execution of above program is :",
       (end-start), "s")
 
 
-# dr.quit()
+dr.quit()
 
 
 
