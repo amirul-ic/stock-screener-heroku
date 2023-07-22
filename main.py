@@ -24,7 +24,7 @@ start = time.time()
 url =[]
 
 for i in range(1,3):
-    website_url = (f'bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
+    website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
     url.append(website_url)
     
 
