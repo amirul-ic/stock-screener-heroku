@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("19:38", "%H:%M")
+desired_time = datetime.strptime("19:43", "%H:%M")
 
 def main():
     import timeit
@@ -92,6 +92,7 @@ while True:
     else:
         difference = desired_time - now
         seconds = difference.total_seconds()
+        print (f'Sleeping for {seconds} seconds')
         time.sleep(abs(seconds))
 
 
