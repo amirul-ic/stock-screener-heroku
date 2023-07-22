@@ -2,7 +2,7 @@ pandas
 numpy
 selenium==4.9.1
 selenium-wire
-
+webdriver_manager
 requests
 bs4
 lxml
