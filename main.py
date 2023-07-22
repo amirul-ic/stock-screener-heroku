@@ -15,12 +15,16 @@ import os
 # chrome_options.add_argument("--disable-dev-shm-usage")
 # chrome_options.add_argument("--no-sandbox")
 # dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--proxy-server=%s' % PROXY)
+
 dr = webdriver.Chrome()
 
 start = time.time()
 
-os.environ['http_proxy'] = os.environ.get('FIXIE_URL', '')
-os.environ['https_proxy'] = os.environ.get('FIXIE_URL', '')
+
 
 #2) Create a loop to scrape info in each URL for each page.
 
