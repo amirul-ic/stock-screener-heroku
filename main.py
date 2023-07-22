@@ -1,6 +1,6 @@
 import time
 from time import gmtime, strftime
-desired_time = '17:50'
+desired_time = '18:40'
 
 def main():
     import timeit
@@ -87,8 +87,8 @@ while True:
     if strftime("%H:%M", gmtime()) == desired_time:
         main()
         time.sleep(60)
-    else:
-        print ("Not Scraping")
+    # else:
+    #     print ("Not Scraping")
 
 
 
