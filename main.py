@@ -9,15 +9,20 @@ import time
 from datetime import date
 import os
 
-PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
+#PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument('--proxy-server=%s' % PROXY)
-dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+
+os.environ['http_proxy'] = os.environ.get('FIXIE_URL', '')
+os.environ['https_proxy'] = os.environ.get('FIXIE_URL', '')
+
+
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--disable-dev-shm-usage")
+# chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument('--proxy-server=%s' % PROXY)
+# dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
 
 
@@ -41,8 +46,9 @@ import datetime
 frames = []
 
 for link in url:
-    dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    print (dr.page_source)
+    # dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    dr = requests.get(link)
+    print (dr)
     soup = BeautifulSoup(dr.page_source,'lxml')
     tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
     last_div = None
