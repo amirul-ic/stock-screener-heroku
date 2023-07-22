@@ -23,7 +23,7 @@ chrome_options.add_argument("--no-sandbox")
 
 sel_options = {
     'proxy': {
-        'http': http://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
+        'http': 'http://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
         'https': 'https://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
     }
 }
