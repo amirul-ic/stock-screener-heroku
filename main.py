@@ -87,8 +87,8 @@ while True:
     if strftime("%H:%M", gmtime()) == desired_time:
         main()
         time.sleep(60)
-    # else:
-    #     print ("Not Scraping")
+    else:
+        time.sleep(60)
 
 
 
