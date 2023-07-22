@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("19:12", "%H:%M")
+desired_time = datetime.strptime("19:15", "%H:%M")
 
 def main():
     import timeit
