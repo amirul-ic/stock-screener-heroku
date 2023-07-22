@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("19:15", "%H:%M")
+desired_time = datetime.strptime("19:25", "%H:%M")
 
 def main():
     import timeit
@@ -85,11 +85,12 @@ def main():
     dr.quit()
 
 while True:
-    if strftime("%H:%M", gmtime()) == desired_time:
+    now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
+    if now == desired_time:
         main()
         time.sleep(60)
-    else:
-        time.sleep((desired_time - strftime("%H:%M", gmtime())) - 1)
+    else:  
+        time.sleep((desired_time - now)-1)
 
 
 
