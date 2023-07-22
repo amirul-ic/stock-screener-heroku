@@ -9,12 +9,12 @@ import time
 from datetime import date
 import os
 
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
-# dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
 start = time.time()
 
@@ -29,12 +29,13 @@ for i in range(1,3):
 
 print (url)
 
-# import datetime
-# frames = []
+import datetime
+frames = []
 
-# for link in url:
-#     dr.get(link)
-#     soup = BeautifulSoup(dr.page_source,'lxml')
+for link in url:
+    dr.get(link)
+    soup = BeautifulSoup(dr.page_source,'lxml')
+    print(soup)
 #     tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
 #     last_div = None
 #     for last_div in tableMain:pass
