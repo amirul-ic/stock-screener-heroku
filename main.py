@@ -48,7 +48,7 @@ for link in url:
     df[0].rename(index= str, inplace = True)
     frames.append(df[0].assign(date=datetime.datetime(2022, 1, 4)))
 
-3) Append all the information into a single data frame.
+# 3) Append all the information into a single data frame.
     
 stock_list = pd.concat(frames)
 stock_list = stock_list[['Name', 'Code', 'LACP']]
@@ -61,13 +61,6 @@ end = time.time()
 
 print("The time of execution of above program is :",
       (end-start), "s")
-
-
-
-
-
-
-
 
 
 
