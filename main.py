@@ -3,18 +3,20 @@ from time import gmtime, strftime
 desired_time = '17:50'
 
 def main():
-    from datetime import date
-    import os
-    from selenium.webdriver.chrome.service import Service as ChromeService
-    from webdriver_manager.chrome import ChromeDriverManager
-    from selenium.webdriver.common.by import By
-    from seleniumwire import webdriver
     import timeit
     import pandas as pd
     import requests
     import urllib.request
     from bs4 import BeautifulSoup
     from selenium import webdriver
+    from datetime import date
+    import os
+    from selenium.webdriver.chrome.service import Service as ChromeService
+    from webdriver_manager.chrome import ChromeDriverManager
+    from selenium.webdriver.common.by import By
+    from seleniumwire import webdriver
+
+
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
