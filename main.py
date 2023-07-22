@@ -8,21 +8,29 @@ from selenium import webdriver
 import time
 from datetime import date
 import os
+from selenium.webdriver.chrome.service import Service as ChromeService
+#from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 #PROXY = "http://fixie:7KlUHFguU9JwLTE@velodrome.usefixie.com:80"
 
 
-os.environ['http_proxy'] = os.environ.get('FIXIE_URL', '')
-os.environ['https_proxy'] = os.environ.get('FIXIE_URL', '')
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument('--proxy-server=%s' % PROXY)
 
 
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
-# chrome_options.add_argument('--proxy-server=%s' % PROXY)
-# dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+sel_options = {
+    'proxy': {
+        'http': http://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
+        'https': 'https://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
+    }
+}
+
+dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options, seleniumwire_options=sel_options)
 
 
 
