@@ -2,12 +2,11 @@ pandas
 numpy
 selenium==4.9.1
 
-#timeit
-#requests
-#urllib
-#time
-#bs4
+timeit
+requests
+urllib
+time
+bs4
 
 
-#time
-#datetime
+datetime
