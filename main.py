@@ -35,9 +35,9 @@ frames = []
 
 for link in url:
     dr.get(link)
-    soup = BeautifulSoup(dr.page_source,'lxml')
-    print (soup)
-    tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
+    print(dr.page_source)
+    # soup = BeautifulSoup(dr.page_source,'lxml')
+    # tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
     # last_div = None
     # for last_div in tableMain:pass
     # if last_div:
