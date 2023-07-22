@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("19:25", "%H:%M")
+desired_time = datetime.strptime("19:38", "%H:%M")
 
 def main():
     import timeit
@@ -43,7 +43,7 @@ def main():
 
     url =[]
 
-    for i in range(1,2):
+    for i in range(1,4):
         website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
         url.append(website_url)
         
@@ -86,11 +86,13 @@ def main():
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-    if now == desired_time:
+    if desired_time == now:
         main()
-        time.sleep(60)
-    else:  
-        time.sleep((desired_time - now)-1)
+        time.sleep(50)
+    else:
+        difference = desired_time - now
+        seconds = difference.total_seconds()
+        time.sleep(abs(seconds))
 
 
 
