@@ -33,7 +33,7 @@ def main():
     from bs4 import BeautifulSoup
     from datetime import date
     import time
-    from selenium import webdriver
+    # from selenium import webdriver
     from selenium.webdriver.common.by import By
     # dr = webdriver.Chrome()
 
