@@ -464,11 +464,12 @@ while True:
         main()
         time.sleep(30)
     else:
-        now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-        difference = desired_time - now
-        seconds = difference.total_seconds()
-        print (f'Sleeping for {seconds} seconds')
-        time.sleep(abs(seconds)*0.1)
+        # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
+        # difference = desired_time - now
+        # seconds = difference.total_seconds()
+        # print (f'Sleeping for {seconds} seconds')
+        # time.sleep(abs(seconds)*0.1)
+        break
 
 
 
