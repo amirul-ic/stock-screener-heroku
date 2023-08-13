@@ -233,7 +233,7 @@ def main():
         df['PartitionKey'] = date_today
         # df['PartitionKey'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y%m%d').astype('int')
         
-        df= df.to_dict('record')
+        df= df.to_dict('records')
         rows = [row for row in df]    
         for row in rows:
             a = row['PartitionKey']
@@ -370,7 +370,7 @@ def main():
         df[f'{prefix}date'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y-%m-%d')
         df['PartitionKey'] = date_today
         
-        df= df.to_dict('record')
+        df= df.to_dict('records')
         rows = [row for row in df]    
         for row in rows:
             a = row['PartitionKey']
@@ -441,7 +441,7 @@ def main():
         df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
         df['PartitionKey'] = date_today
         
-        df= df.to_dict('record')
+        df= df.to_dict('records')
         rows = [row for row in df]    
         for row in rows:
             a = row['PartitionKey']
