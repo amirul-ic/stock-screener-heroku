@@ -1,7 +1,8 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("19:57", "%H:%M")
+# desired_time = datetime.strptime("19:57", "%H:%M")
+desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
     import timeit
@@ -13,19 +14,44 @@ def main():
     from datetime import date
     import os
     from selenium.webdriver.chrome.service import Service as ChromeService
-    from webdriver_manager.chrome import ChromeDriverManager
+    from webdriver_manager.chrome import ChromeDriverManager ##20230813
+    from selenium.webdriver.common.by import By ##20230813
+    from seleniumwire import webdriver ##20230813
+
+
+    import os
+    import pandas as pd
+    import numpy as np
+    import glob
+
+
+    import pandas as pd
+    import pandas as pd
+    import requests
+    import urllib.request
+    import time
+    from bs4 import BeautifulSoup
+    from datetime import date
+    import time
+    from selenium import webdriver
     from selenium.webdriver.common.by import By
-    from seleniumwire import webdriver
+    # dr = webdriver.Chrome()
 
 
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.webdriver.support.wait import WebDriverWait
 
+    ##20230813
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    # chrome_options.add_argument('--proxy-server=%s' % PROXY)
-
+    # # chrome_options.add_argument('--proxy-server=%s' % PROXY)
+    ##20230813
 
     sel_options = {
         'proxy': {
@@ -34,20 +60,339 @@ def main():
         }
     }
 
-    dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options, seleniumwire_options=sel_options)
+    dr = webdriver.Chrome(os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options, seleniumwire_options=sel_options) ##20230813
+    
 
     start = time.time()
 
 
-    # #2) Create a loop to scrape info in each URL for each page.
+    # #2) For shortlisted stock
+
+    df_indicator = pd.DataFrame()
+    start = time.time()
+
+    filtered_list = ['bollinger-band-breakout',
+    'all-time-high',
+    # 'near-support',
+    # 'smart-money',
+    # 'tplus',
+    # 'blue-chip-uptrend',
+    # 'erp5-momentum',
+    # 'increasing-ttm-ichimoku',
+    # '3-ducks',
+    # 'ema5-cross-sma10',
+    # 'ema5-cross-sma9',
+    # 'ema7-cross-sma200',
+    # 'kelia-ma-cross',
+    # 'sma20-cross-sma40',
+    # 'ma20-cross-ma50',
+    # 'ma30-cross-ma200',
+    # 'ma7-cross-ma26',
+    # 'above-ma50',
+    # 'ma20',
+    # 'ma200',
+    # 'ma5',
+    # 'ma50',
+    # 'solid-ma-uptrend',
+    # 'bollinger-band-squeeze',
+    # 'bollinger-band-swing',
+    # 'ichimoku-above-kumo',
+    # 'ichimoku-bearish-reversal',
+    # 'ichimoku-bullish-reversal',
+    # 'ichimoku-chikou-span-cross',
+    # 'ichimoku-kijun-sen-cross',
+    # 'ichimoku-kumo-breakout',
+    # 'ichimoku-kumo-twist',
+    # 'tenkan-kijun-cross',
+    # 'macd-4r1g-above-signal',
+    # 'macd-above-0',
+    # 'macd-cross-0',
+    # 'parabolic-sar',
+    # 'rsi-above-50',
+    # 'simple-uptrend',
+    # 'stochastic-overbought',
+    # 'bollinger-band-oversold',
+    # 'cci-cross',
+    # 'macd-oversold',
+    # 'oversold-bullish-engulfing',
+    # 'rsi-oversold',
+    # 'short-term-oversold',
+    # 'stochastic-oversold',
+    # 'lower-high-lower-low',
+    # '20-day-high',
+    # '52-week-high',
+    # '52-week-low',
+    # 'fbo-almost',
+    # 'fbo-recent',
+    # 'tplus-volume',
+    # 'bullish-candlestick',
+    # 'candle-4r1g',
+    # 'gap-up',
+    # 'heikin-ashi-4g1r',
+    # 'heikin-ashi-4r1g',
+    # 'heikin-ashi-strong-buying-pressure',
+    # 'heikin-ashi-strong-selling-pressure',
+    # 'ikh-ha-strong-buying-pressure',
+    # 'ikh-ha-strong-selling-pressure',
+    # 'chaikin-money-flow-cmf',
+    # 'on-balance-volume-obv',
+    # 'silence-is-golden',
+    # 'volume-engulfing',
+    # 'volume-increase-30-percent',
+    # 'long-term-sideway',
+    # 'mid-term-sideway',
+    # 'short-term-sideway',
+    # 'gann-square-of-nine',
+    # 'ma-as-support',
+    # 'ma20-as-support',
+    # 'atr',
+    # 'risk-reward-ratio-chandelier-exit',
+    # 'sharpe-ratio',
+    # 'vwma-as-support',
+    ]
+
+    # dr = webdriver.Chrome()
 
     url =[]
+
+    for i in filtered_list:
+        website_url = ('https://www.isaham.my/screener/'+i)
+        url.append(website_url)
+
+    frames = []
+
+    # Start Looping
+    yy = -1
+    for cl,link in enumerate(url):
+        print ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") 
+        print (url[cl])
+        dr.get(url[cl])
+
+        time.sleep(10)
+        temp_list = [] 
+        soup = BeautifulSoup(dr.page_source,'lxml')
+        for table in soup.find_all('tbody'):
+            for div_class in table.find_all('div', {'class':'d-flex flex-row align-items-center'}):
+                for i,j in enumerate (div_class.find_all('div')[1]):
+                    if i == 0:
+                        temp_list.append(j.text)
+                        # print (temp_list)
+        
+        time.sleep(20)
+                    
+        while True:
+            try:
+                
+                dr.find_element(By.XPATH, "/html/body/div/div[5]/div/div[2]/div[1]/ul/li[9]/a").click()
+                # WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[5]/div/div[2]/div[1]/ul/li[9]/a"))).click()
+                soup1 = BeautifulSoup(dr.page_source,'lxml')
+                time.sleep(20)
+                for table in soup1.find_all('tbody'):
+                    for div_class in table.find_all('div', {'class':'d-flex flex-row align-items-center'}):
+                        for i,j in enumerate (div_class.find_all('div')[1]):
+                            if i == 0:
+                                temp_list.append(j.text)
+                                # print (temp_list)
+
+
+            except:
+                break
+
+        
+        yy = yy + 1
+
+        df_staging = pd.DataFrame(temp_list, columns =['stock'])
+        df_staging['indicator'] = link[31:]
+
+        df_indicator = pd.concat([df_indicator, df_staging], ignore_index=True)
+
+
+    # 3) Append all the information into a single data frame.
+        
+
+    df_indicator['date'] = date.today()
+    df_indicator.to_csv(f'stock_list_{date.today()}.csv')
+    df_indicator.info()
+
+
+    end = time.time()
+
+    print("The time of execution of above program is :",
+        (end-start), "s")
+
+    ## write to Azure Table
+    from azure.cosmosdb.table.tableservice import TableService 
+    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    TOLOADINTOTABLE = "dailyshortlistedraw"
+
+    date_today = date.today().strftime('%Y-%m-%d')
+
+    def doLoad(ts):
+        df = df_indicator.copy()
+        df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
+        df['PartitionKey'] = date_today
+        # df['PartitionKey'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y%m%d').astype('int')
+        
+        df= df.to_dict('record')
+        rows = [row for row in df]    
+        for row in rows:
+            a = row['PartitionKey']
+            row['PartitionKey'] = a
+            row['RowKey'] = row['stock']
+            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+
+    table_service = TableService(connection_string=CONNECTION_STRING)
+    table_service.create_table(TOLOADINTOTABLE)
+    doLoad(table_service)
+
+    print ("Done load to Azure Table")
+
+    ##clean and write to Azure Table Again
+
+    indicators = ['20-day-high',
+    '3-ducks',
+    '52-week-high',
+    '52-week-low',
+    'above-ma50',
+    'all-time-high',
+    'atr',
+    'blue-chip-uptrend',
+    'bollinger-band-breakout',
+    'bollinger-band-oversold',
+    'bollinger-band-squeeze',
+    'bollinger-band-swing',
+    'bullish-candlestick',
+    'candle-4r1g',
+    'cci-cross',
+    'chaikin-money-flow-cmf',
+    'ema5-cross-sma10',
+    'ema5-cross-sma9',
+    'ema7-cross-sma200',
+    'erp5-momentum',
+    'fbo-almost',
+    'fbo-recent',
+    'gann-square-of-nine',
+    'gap-up',
+    'heikin-ashi-4g1r',
+    'heikin-ashi-4r1g',
+    'heikin-ashi-strong-buying-pressure',
+    'heikin-ashi-strong-selling-pressure',
+    'ichimoku-above-kumo',
+    'ichimoku-bearish-reversal',
+    'ichimoku-bullish-reversal',
+    'ichimoku-chikou-span-cross',
+    'ichimoku-kijun-sen-cross',
+    'ichimoku-kumo-breakout',
+    'ichimoku-kumo-twist',
+    'ikh-ha-strong-buying-pressure',
+    'ikh-ha-strong-selling-pressure',
+    'increasing-ttm-ichimoku',
+    'kelia-ma-cross',
+    'long-term-sideway',
+    'lower-high-lower-low',
+    'ma-as-support',
+    'ma20',
+    'ma20-as-support',
+    'ma20-cross-ma50',
+    'ma200',
+    'ma30-cross-ma200',
+    'ma5',
+    'ma50',
+    'ma7-cross-ma26',
+    'macd-4r1g-above-signal',
+    'macd-above-0',
+    'macd-cross-0',
+    'macd-oversold',
+    'mid-term-sideway',
+    'near-support',
+    'on-balance-volume-obv',
+    'oversold-bullish-engulfing',
+    'parabolic-sar',
+    'risk-reward-ratio-chandelier-exit',
+    'rsi-above-50',
+    'rsi-oversold',
+    'sharpe-ratio',
+    'short-term-oversold',
+    'short-term-sideway',
+    'silence-is-golden',
+    'simple-uptrend',
+    'sma20-cross-sma40',
+    'smart-money',
+    'solid-ma-uptrend',
+    'stochastic-overbought',
+    'stochastic-oversold',
+    'tenkan-kijun-cross',
+    'tplus',
+    'tplus-volume',
+    'volume-engulfing',
+    'volume-increase-30-percent',
+    'vwma-as-support']
+
+    #Load Screened Stock Dataset  
+    # df = pd.read_csv(f'stock_list_{date_shortlisted}.csv', usecols=range(1,4))
+    # df = df[df['date'] == date_shortlisted]
+    df1 = df_indicator.copy()
+    df1 = df1[['stock', 'date', 'indicator']]
+
+    shortlisted1 = pd.crosstab([df1['date'], df1['stock']], df1['indicator'], dropna=False)
+    shortlisted1.reset_index(inplace = True)
+    shortlisted1
+
+    col_reindex = ['date', 'stock'] + indicators
+
+
+    df1 = shortlisted1.reindex(col_reindex, axis='columns').fillna(0)
+    df1
+
+    # Remove symbol, indication of if a stock is Shariah, etc. 
+
+    #For Shortlisted Stock Dataset
+    df1['name'] = df1['stock'].str.strip('*')
+    df1['name'] = df1['name'].str.replace("( ).*","")
+
+    df1.columns = df1.columns.str.replace("-", "_")
+
+    prefix = 'dailyraw_'
+    df1 = df1.add_prefix(prefix)
+
+    df1 = df1.reset_index()
+    
+
+    # Load to Azure Table
+    from azure.cosmosdb.table.tableservice import TableService 
+    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    TOLOADINTOTABLE = "dailyshortlistedclean"
+
+    date_today = date.today().strftime('%Y-%m-%d')
+
+    def doLoad(ts):
+        df = df1.copy()
+        df[f'{prefix}date'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y-%m-%d')
+        df['PartitionKey'] = date_today
+        
+        df= df.to_dict('record')
+        rows = [row for row in df]    
+        for row in rows:
+            a = row['PartitionKey']
+            row['PartitionKey'] = a
+            row['RowKey'] = row[f'{prefix}name']
+            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+
+    table_service = TableService(connection_string=CONNECTION_STRING)
+    table_service.create_table(TOLOADINTOTABLE)
+    doLoad(table_service)
+
+    print ("Done load to Azure Table")
+
+    ## Stock Price
+
+    url =[]
+
 
     for i in range(1,4):
         website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
         url.append(website_url)
         
-
     print (url)
 
     import datetime
@@ -71,10 +416,9 @@ def main():
         
     stock_list = pd.concat(frames)
     stock_list = stock_list[['Name', 'Code', 'LACP']]
+    stock_list.columns = ['name', 'code', 'lacp']
 
     stock_list['date'] = date.today()
-    stock_list.info()
-    stock_list.to_csv(f'stock_price_{date.today()}.csv')
 
     end = time.time()
 
@@ -83,6 +427,36 @@ def main():
 
 
     dr.quit()
+
+
+
+    from azure.cosmosdb.table.tableservice import TableService 
+    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    TOLOADINTOTABLE = "dailystockprice"
+
+    date_today = date.today().strftime('%Y-%m-%d')
+
+    def doLoad(ts):
+        df = stock_list.copy()
+        df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
+        df['PartitionKey'] = date_today
+        
+        df= df.to_dict('record')
+        rows = [row for row in df]    
+        for row in rows:
+            a = row['PartitionKey']
+            row['PartitionKey'] = a
+            row['RowKey'] = row[f'name']
+            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+
+    table_service = TableService(connection_string=CONNECTION_STRING)
+    table_service.create_table(TOLOADINTOTABLE)
+    doLoad(table_service)
+
+    print ("Done load to Azure Table")
+
+    ##################################################################################################################################################################
+
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
