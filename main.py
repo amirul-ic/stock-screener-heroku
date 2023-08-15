@@ -248,7 +248,7 @@ def main():
 
     print ("Done load to Azure Table")
 
-    del df_indicator
+    
 
     ##clean and write to Azure Table Again
 
