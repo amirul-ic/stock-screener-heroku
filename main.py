@@ -211,6 +211,7 @@ def main():
         
 
     df_indicator['date'] = date.today()
+    df_indicator['stock'] = df_indicator['stock'].str.replace('N/A','NA')
     df_indicator.to_csv(f'stock_list_{date.today()}.csv')
     df_indicator.info()
 
@@ -246,6 +247,8 @@ def main():
     doLoad(table_service)
 
     print ("Done load to Azure Table")
+
+    del df_indicator
 
     ##clean and write to Azure Table Again
 
