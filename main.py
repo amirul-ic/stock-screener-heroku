@@ -1,8 +1,8 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("03:00", "%H:%M")
-# desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
+# desired_time = datetime.strptime("03:00", "%H:%M")
+desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
     import timeit
