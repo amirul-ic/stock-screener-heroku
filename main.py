@@ -25,7 +25,7 @@ def get_UN_data():
     # df = pd.read_csv(r"C:\Users\TM36899\Desktop\20230806\daily_shortlisted_stock.csv")
 
     tasks = table_service.query_entities(
-        'dailyshortlistedclean', filter="PartitionKey eq '2023-08-05'")
+        'dailyshortlistedclean', filter="PartitionKey eq '2023-08-15'")
 
     df = pd.DataFrame(tasks)
     df = df[['dailyraw_name', 'index', 'PartitionKey']]
