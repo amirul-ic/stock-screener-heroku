@@ -1,3 +1,3 @@
 worker: python scraper.py
-web: python main.py
+web: streamlit run main.py
 
