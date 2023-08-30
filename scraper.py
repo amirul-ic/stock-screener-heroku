@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("23:23", "%H:%M")
+desired_time = datetime.strptime("23:55", "%H:%M")
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
@@ -55,8 +55,8 @@ def main():
 
     sel_options = {
         'proxy': {
-            'http': 'http://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
-            'https': 'https://hamrrgop:o5pgd5udin8t@2.56.119.93:5074',
+            'http': 'http://hamrrgop:o5pgd5udin8t@104.239.35.69:5751',
+            'https': 'https://hamrrgop:o5pgd5udin8t@104.239.35.69:5751',
         }
     }
 
