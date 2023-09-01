@@ -426,10 +426,12 @@ def main():
 
     end = time.time()
 
+    stocK_list.info()
+
     print("The time of execution of above program is :",
         (end-start), "s")
 
-
+    
     dr.quit()
 
 
@@ -470,7 +472,6 @@ def main():
     
     # General Purpose Modules
     import pickle
-    from IPython.display import display
     from datetime import datetime
     
     # Data Processing Modules
