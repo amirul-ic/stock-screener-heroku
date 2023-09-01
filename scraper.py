@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("23:05", "%H:%M")
+desired_time = datetime.strptime("23:40", "%H:%M")
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
@@ -537,11 +537,11 @@ def main():
     stock_list_new
 
     del stock_list
-    
-        
+            
     df = df.merge(stock_list_new, how='left', left_on='name', right_on = 'name_new')
 
     del stock_list_new
+    del df1
     
     df['day_name'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.day_name()
     df['month'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.strftime('%m')
@@ -645,13 +645,13 @@ def main():
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-    # if desired_time == now:
-    #     print ("Scoring run......")
-    #     main()
-    #     # time.sleep(30)
-    if now == "now":
+    if desired_time == now:
         print ("Scoring run......")
         main()
+        # time.sleep(30)
+    # if now == "now":
+    #     print ("Scoring run......")
+    #     main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
         # difference = desired_time - now
