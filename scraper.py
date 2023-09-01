@@ -72,7 +72,7 @@ def main():
     start = time.time()
 
     filtered_list = ['all-time-high',
-    'bollinger-band-breakout',
+    # 'bollinger-band-breakout',
     # 'near-support',
     # 'smart-money',
     # 'tplus',
