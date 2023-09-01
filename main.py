@@ -49,7 +49,7 @@ try:
     st.markdown("***")
     st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
     a_date = st.date_input("Pick a date", (min_date, max_date)) 
-    options = st.multiselect("Choose scenario", df['scenario'].unique())
+    options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
     
     if not options:
         st.error("Please select at least one scenario and one date")
