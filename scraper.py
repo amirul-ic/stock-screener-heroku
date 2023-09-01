@@ -633,10 +633,11 @@ def main():
 
 
 while True:
-    # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
+    now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
     # if desired_time == now:
         # main()
         # time.sleep(30)
+    if now = now:
         main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
