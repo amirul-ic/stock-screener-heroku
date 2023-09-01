@@ -598,7 +598,7 @@ def main():
         list_df.append(df_concat)
         # df_score = pd.concat([df_score, df_concat], ignore_index=True)
     
-
+    print (list_df)
     df_score = pd.concat(list_df)
     con_high = df_score['y_pred'] > 0.9
     con_med = df_score['y_pred'] > 0.8
