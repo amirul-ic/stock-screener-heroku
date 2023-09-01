@@ -24,11 +24,14 @@ st.sidebar.markdown("# Main page 🎈")
 def get_UN_data():
     # df = pd.read_csv(r"C:\Users\TM36899\Desktop\20230806\daily_shortlisted_stock.csv")
 
-    tasks = table_service.query_entities(
-        'dailyshortlistedclean', filter="PartitionKey eq '2023-08-15'")
+    # tasks = table_service.query_entities(
+    #     'dailyshortlistedclean', filter="PartitionKey eq '2023-08-15'")
+
+    tasks = table_service.query_entities('dailyscored')
 
     df = pd.DataFrame(tasks)
-    df = df[['dailyraw_name', 'index', 'PartitionKey']]
+    # df = df[['dailyraw_name', 'index', 'PartitionKey']]
+    df = df[['date', 'name', 'scenario', 'band']]
 
     return df
 
@@ -37,8 +40,8 @@ try:
     df = get_UN_data()
     # df['date'] = pd.to_datetime(df['date']).dt.date
     
-    df['date'] = pd.to_datetime(df['PartitionKey']).dt.date
-    df['scenario'] = '7d_3p'
+    # df['date'] = pd.to_datetime(df['PartitionKey']).dt.date
+    # df['scenario'] = '7d_3p'
 
     min_date = datetime.datetime(2023,1,1)
     max_date = datetime.date(2023,9,1)
