@@ -583,14 +583,17 @@ def main():
         df_staging = df.copy()
     
         df_staging['y_pred'] = lgb_classifier.predict_proba(df_staging[feature_names])[:,1]
-        # df_staging['y_pred'] = lgb_classifier.predict(df_staging[feature_names])
        
         df_staging.reset_index(inplace=True)
         
         df_staging['scenario'] = i
+
+        print ('Scoring for {i}')
         
         df_concat = df_staging[['name', 'date', 'y_pred', 'scenario']]
-    
+
+        print (df_concat)
+        
         df_score = pd.concat([df_score, df_concat], ignore_index=True)
     
     
@@ -638,7 +641,7 @@ while True:
     # if desired_time == now:
     #     main()
     #     time.sleep(30)
-    if now == "test1":
+    if now == now:
         main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
