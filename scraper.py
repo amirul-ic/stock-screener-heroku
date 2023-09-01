@@ -55,8 +55,8 @@ def main():
 
     sel_options = {
         'proxy': {
-            'http': 'http://hamrrgop:o5pgd5udin8t@154.194.8.247:5778',
-            'https': 'https://hamrrgop:o5pgd5udin8t@154.194.8.247:5778',
+            'http': 'http://hamrrgop:o5pgd5udin8t@119.42.38.6:6188',
+            'https': 'https://hamrrgop:o5pgd5udin8t@119.42.38.6:6188',
         }
     }
 
