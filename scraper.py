@@ -637,7 +637,7 @@ while True:
     # if desired_time == now:
         # main()
         # time.sleep(30)
-    main()
+        main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
         # difference = desired_time - now
