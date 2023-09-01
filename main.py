@@ -32,7 +32,7 @@ def get_UN_data():
     df = pd.DataFrame(tasks)
     # df = df[['dailyraw_name', 'index', 'PartitionKey']]
     df = df[['date', 'name', 'scenario', 'band']]
-    df = df[df['scenario'].isin(['High','Medium'])]
+    df = df[df['band'].isin(['High','Medium'])]
     
     return df
 
