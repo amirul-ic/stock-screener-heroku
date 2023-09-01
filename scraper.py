@@ -393,7 +393,7 @@ def main():
     url =[]
 
 
-    for i in range(1,49):
+    for i in range(1,5):
         website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
         url.append(website_url)
         
@@ -638,7 +638,7 @@ while True:
     # if desired_time == now:
     #     main()
     #     time.sleep(30)
-    if now == "test":
+    if now == now:
         main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
