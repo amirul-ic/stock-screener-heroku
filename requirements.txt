@@ -19,4 +19,6 @@ lightgbm==4.0.0
 scikit-learn==1.1.2
 scipy
 
+cython==0.29.35
+
 
