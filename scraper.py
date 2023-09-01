@@ -645,13 +645,15 @@ def main():
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-    if desired_time == now:
-        print ("Scoring run......")
-        main()
-        # time.sleep(30)
-    # if now == "now":
+    # if desired_time == now:
+    #     print (now)
     #     print ("Scoring run......")
     #     main()
+    #     # time.sleep(30)
+    if now == now:
+        print (now)
+        print ("Scoring run......")
+        main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
         # difference = desired_time - now
