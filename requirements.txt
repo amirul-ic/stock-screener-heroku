@@ -1,4 +1,4 @@
-setuptools==59.8.0
+##setuptools==59.8.0
 
 pandas==1.5.0
 numpy==1.23.3
@@ -16,9 +16,10 @@ streamlit-option-menu
 streamlit_option_menu
 protobuf==3.20.1
 lightgbm==4.0.0
-scikit-learn==1.1.2
+##scikit-learn==1.1.2
+sklearn
 scipy
 
-cython==0.29.35
+##cython==0.29.35
 
 
