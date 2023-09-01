@@ -567,7 +567,8 @@ def main():
     
     scenario_list = ['d3_p3','d3_p5', 'd3_p7', 'd5_p3', 'd5_p5', 'd5_p7', 'd7_p3', 'd7_p5', 'd7_p7']
     
-    df_score = pd.DataFrame()
+    # df_score = pd.DataFrame()
+    list_df = []
     for i in scenario_list:
         mdl_f_name = path + f'{i}_lgbmcv_model.pkl'
     
@@ -593,10 +594,12 @@ def main():
         df_concat = df_staging[['name', 'date', 'y_pred', 'scenario']]
 
         print (df_concat)
-        
-        df_score = pd.concat([df_score, df_concat], ignore_index=True)
+
+        list_df.append(df_concat)
+        # df_score = pd.concat([df_score, df_concat], ignore_index=True)
     
-    
+
+    df_score = pd.concat(list_df)
     con_high = df_score['y_pred'] > 0.9
     con_med = df_score['y_pred'] > 0.8
     
