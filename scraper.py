@@ -426,7 +426,7 @@ def main():
 
     end = time.time()
 
-    stocK_list.info()
+    stock_list.info()
 
     print("The time of execution of above program is :",
         (end-start), "s")
