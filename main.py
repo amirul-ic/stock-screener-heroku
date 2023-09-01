@@ -14,8 +14,8 @@ table_service = TableService(connection_string=CONNECTION_STRING)
 
 
 
-st.markdown("# Main page 🎈")
-st.sidebar.markdown("# Main page 🎈")
+st.markdown("# Main page")
+st.sidebar.markdown("# Main page")
 
 # https://docs.streamlit.io/library/get-started/multipage-apps/create-a-multipage-app
 
@@ -32,19 +32,16 @@ def get_UN_data():
     df = pd.DataFrame(tasks)
     # df = df[['dailyraw_name', 'index', 'PartitionKey']]
     df = df[['date', 'name', 'scenario', 'band']]
-
+    df = df[df['scenario'].isin(['High','Medium'])]
+    
     return df
 
 try:
-    # df = pd.read_csv(r"C:\Users\TM36899\Desktop\20230806\daily_shortlisted_stock.csv")
     df = get_UN_data()
     df['date'] = pd.to_datetime(df['date']).dt.date
     
-    # df['date'] = pd.to_datetime(df['PartitionKey']).dt.date
-    # df['scenario'] = '7d_3p'
-
     min_date = datetime.datetime(2023,1,1)
-    max_date = datetime.date(2023,9,30)
+    max_date = datetime.date(2024,9,30)
 
     st.markdown("***")
     st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
