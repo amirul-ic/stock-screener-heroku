@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("03:45", "%H:%M")
+desired_time = datetime.strptime("03:55", "%H:%M")
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
@@ -149,6 +149,7 @@ def main():
     # 'risk-reward-ratio-chandelier-exit',
     # 'sharpe-ratio',
     # 'vwma-as-support',
+    
     ]
 
     # dr = webdriver.Chrome()
