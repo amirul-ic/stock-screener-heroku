@@ -44,7 +44,7 @@ try:
     max_date = datetime.date(2024,9,30)
 
     st.markdown("***")
-    st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
+    st.subheader('A header with _italics_ :blue[colors]')
     a_date = st.date_input("Pick a date", (min_date, max_date)) 
     options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
     
