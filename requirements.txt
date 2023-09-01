@@ -13,4 +13,7 @@ streamlit
 streamlit-option-menu
 streamlit_option_menu
 protobuf==3.20.1
+lightgbm==4.0.0
+scikit-learn==1.1.2
+
 
