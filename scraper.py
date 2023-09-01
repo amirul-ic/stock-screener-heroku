@@ -597,6 +597,7 @@ def main():
     
     #df_score = pd.concat(list_df)
     df_score.info()
+    df_score['id_scored'] = df_score['date'].str + df_score['name'] + df_score['scenario']
     con_high = df_score['y_pred'] > 0.9
     con_med = df_score['y_pred'] > 0.8
     
@@ -623,7 +624,8 @@ def main():
         for row in rows:
             a = row['PartitionKey']
             row['PartitionKey'] = a
-            row['RowKey'] = row[f'name']
+            # row['RowKey'] = row[f'name']
+            row['RowKey'] = row[f'id_scored'] 
             ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
     
     table_service = TableService(connection_string=CONNECTION_STRING)
