@@ -458,6 +458,176 @@ def main():
 
     print ("Done load to Azure Table")
 
+    ###########################################################################################################
+    ##### Score model
+    #####
+    #####
+    ###########################################################################################################
+
+    import warnings
+    warnings.filterwarnings('ignore')
+    
+    # General Purpose Modules
+    import pickle
+    from IPython.display import display
+    from datetime import datetime
+    
+    # Data Processing Modules
+    import numpy as np
+    import pandas as pd
+    
+    # ML Modules
+    import lightgbm as lgb
+    from sklearn.preprocessing import OrdinalEncoder
+    from sklearn.metrics import roc_auc_score,precision_score, recall_score 
+    from sklearn.linear_model import LogisticRegression
+    
+    # Custom modules
+    from dataset_schema_dict import dataset_schema
+    
+    # Script variables
+    pd.options.mode.chained_assignment = None
+    
+    _author = 'amirul'
+    
+    script_start = datetime.now()       # Script start
+    
+    _seed = 999                         # random state seed
+    
+    save_transformers = True            # Save the lgb transformers
+    
+    verbose_script = True               # Verbosity of script
+    
+    dict_path = f'./python_model_objects/'
+    f_name = dict_path + f'dataset_schema_dict.pkl'
+    
+    # Load from pickle into __main__
+    with open(f_name, 'rb') as handle:
+        dataset_schema = pickle.load(handle)
+    
+    
+    path = f'./python_model_objects/'
+    
+    verbose_script = False
+    
+    mdl_f_name = path + f'd3_p3_lgbmcv_model.pkl'
+    
+    # Load from pickle into __main__
+    with open(mdl_f_name, 'rb') as handle:
+        lgb_classifier = pickle.load(handle)
+    
+    
+    # Set aside feature names
+    feature_names = lgb_classifier.feature_name
+    
+    df = df1.copy()
+    df.columns = df.columns.str.removeprefix("dailyraw_")
+    df.columns = df.columns.str.replace("_", "-")
+    df = df.reset_index()
+    df[indicators] = df[indicators].astype('category')
+    
+    
+    stock_list['name_new'] = stock_list['name'].str.strip('*')
+    stock_list['name_new'] = stock_list['name_new'].str.replace("( ).*","")
+    stock_list['date_new'] = stock_list['date']
+    stock_list['t0'] = stock_list['lacp']
+    stock_list_new = stock_list[['date_new','name_new', 't0']]
+    stock_list_new
+    
+    df = df.merge(stock_list_new, how='left', left_on='name', right_on = 'name_new')
+    
+    df['day_name'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.day_name()
+    df['month'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.strftime('%m')
+    
+    df.set_index(['name', 'date'], inplace=True)
+    df = df[feature_names]
+    
+    for col in df.columns:
+        if df[col].dtype == object or df[col].dtype.name == 'category':
+            if verbose_script:
+                print('encoding categorical column:')
+                print(col)
+                print('')
+    
+            # Fill missing values
+            df[col].fillna('__unk__', inplace = True)
+    
+            # Load ...
+            enc_f_name = path + f'ordEnc_{col}.pkl'
+            with open(enc_f_name, 'rb') as handle:
+                encoder = pickle.load(handle)
+    
+            # Transform the df object values
+            new_values = encoder.transform(df[col].to_numpy().reshape(-1,1))
+            
+            df[col] = pd.Categorical(new_values.ravel(), ordered = False)
+    
+    
+    scenario_list = ['d3_p3','d3_p5', 'd3_p7', 'd5_p3', 'd5_p5', 'd5_p7', 'd7_p3', 'd7_p5', 'd7_p7']
+    
+    df_score = pd.DataFrame()
+    for i in scenario_list:
+        mdl_f_name = path + f'{i}_lgbmcv_model.pkl'
+    
+        # Load from pickle into __main__
+        with open(mdl_f_name, 'rb') as handle:
+            lgb_classifier = pickle.load(handle)
+    
+        # Set aside feature names
+        feature_names = lgb_classifier.feature_name
+    
+        print (feature_names)
+    
+        df_staging = df.copy()
+    
+        df_staging['y_pred'] = lgb_classifier.predict_proba(df_staging[feature_names])[:,1]
+        # df_staging['y_pred'] = lgb_classifier.predict(df_staging[feature_names])
+       
+        df_staging.reset_index(inplace=True)
+        
+        df_staging['scenario'] = i
+        
+        df_concat = df_staging[['name', 'date', 'y_pred', 'scenario']]
+    
+        df_score = pd.concat([df_score, df_concat], ignore_index=True)
+    
+    
+    con_high = df_score['y_pred'] > 0.9
+    con_med = df_score['y_pred'] > 0.8
+    
+    con = [con_high, con_med]
+    
+    choices = ['High', 'Medium']
+    
+    df_score['band'] = np.select(con, choices, "Low")
+    
+    ## Write to Azure Table
+    from azure.cosmosdb.table.tableservice import TableService 
+    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    TOLOADINTOTABLE = "dailyscored"
+    
+    date_today = date.today().strftime('%Y-%m-%d')
+    
+    def doLoad(ts):
+        df = df_score.copy()
+        df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
+        df['PartitionKey'] = date_today
+        
+        df= df.to_dict('records')
+        rows = [row for row in df]    
+        for row in rows:
+            a = row['PartitionKey']
+            row['PartitionKey'] = a
+            row['RowKey'] = row[f'name']
+            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+    
+    table_service = TableService(connection_string=CONNECTION_STRING)
+    table_service.create_table(TOLOADINTOTABLE)
+    doLoad(table_service)
+    
+    print ("Done load to Azure Table")
+
+
     ##################################################################################################################################################################
 
 
