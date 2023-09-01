@@ -73,82 +73,82 @@ def main():
 
     filtered_list = ['all-time-high',
     'bollinger-band-breakout',
-    # 'near-support',
-    # 'smart-money',
-    # 'tplus',
-    # 'blue-chip-uptrend',
-    # 'erp5-momentum',
-    # 'increasing-ttm-ichimoku',
-    # '3-ducks',
-    # 'ema5-cross-sma10',
-    # 'ema5-cross-sma9',
-    # 'ema7-cross-sma200',
-    # 'kelia-ma-cross',
-    # 'sma20-cross-sma40',
-    # 'ma20-cross-ma50',
-    # 'ma30-cross-ma200',
-    # 'ma7-cross-ma26',
-    # 'above-ma50',
-    # 'ma20',
-    # 'ma200',
-    # 'ma5',
-    # 'ma50',
-    # 'solid-ma-uptrend',
-    # 'bollinger-band-squeeze',
-    # 'bollinger-band-swing',
-    # 'ichimoku-above-kumo',
-    # 'ichimoku-bearish-reversal',
-    # 'ichimoku-bullish-reversal',
-    # 'ichimoku-chikou-span-cross',
-    # 'ichimoku-kijun-sen-cross',
-    # 'ichimoku-kumo-breakout',
-    # 'ichimoku-kumo-twist',
-    # 'tenkan-kijun-cross',
-    # 'macd-4r1g-above-signal',
-    # 'macd-above-0',
-    # 'macd-cross-0',
-    # 'parabolic-sar',
-    # 'rsi-above-50',
-    # 'simple-uptrend',
-    # 'stochastic-overbought',
-    # 'bollinger-band-oversold',
-    # 'cci-cross',
-    # 'macd-oversold',
-    # 'oversold-bullish-engulfing',
-    # 'rsi-oversold',
-    # 'short-term-oversold',
-    # 'stochastic-oversold',
-    # 'lower-high-lower-low',
-    # '20-day-high',
-    # '52-week-high',
-    # '52-week-low',
-    # 'fbo-almost',
-    # 'fbo-recent',
-    # 'tplus-volume',
-    # 'bullish-candlestick',
-    # 'candle-4r1g',
-    # 'gap-up',
-    # 'heikin-ashi-4g1r',
-    # 'heikin-ashi-4r1g',
-    # 'heikin-ashi-strong-buying-pressure',
-    # 'heikin-ashi-strong-selling-pressure',
-    # 'ikh-ha-strong-buying-pressure',
-    # 'ikh-ha-strong-selling-pressure',
-    # 'chaikin-money-flow-cmf',
-    # 'on-balance-volume-obv',
-    # 'silence-is-golden',
-    # 'volume-engulfing',
-    # 'volume-increase-30-percent',
-    # 'long-term-sideway',
-    # 'mid-term-sideway',
-    # 'short-term-sideway',
-    # 'gann-square-of-nine',
-    # 'ma-as-support',
-    # 'ma20-as-support',
-    # 'atr',
-    # 'risk-reward-ratio-chandelier-exit',
-    # 'sharpe-ratio',
-    # 'vwma-as-support',
+    'near-support',
+    'smart-money',
+    'tplus',
+    'blue-chip-uptrend',
+    'erp5-momentum',
+    'increasing-ttm-ichimoku',
+    '3-ducks',
+    'ema5-cross-sma10',
+    'ema5-cross-sma9',
+    'ema7-cross-sma200',
+    'kelia-ma-cross',
+    'sma20-cross-sma40',
+    'ma20-cross-ma50',
+    'ma30-cross-ma200',
+    'ma7-cross-ma26',
+    'above-ma50',
+    'ma20',
+    'ma200',
+    'ma5',
+    'ma50',
+    'solid-ma-uptrend',
+    'bollinger-band-squeeze',
+    'bollinger-band-swing',
+    'ichimoku-above-kumo',
+    'ichimoku-bearish-reversal',
+    'ichimoku-bullish-reversal',
+    'ichimoku-chikou-span-cross',
+    'ichimoku-kijun-sen-cross',
+    'ichimoku-kumo-breakout',
+    'ichimoku-kumo-twist',
+    'tenkan-kijun-cross',
+    'macd-4r1g-above-signal',
+    'macd-above-0',
+    'macd-cross-0',
+    'parabolic-sar',
+    'rsi-above-50',
+    'simple-uptrend',
+    'stochastic-overbought',
+    'bollinger-band-oversold',
+    'cci-cross',
+    'macd-oversold',
+    'oversold-bullish-engulfing',
+    'rsi-oversold',
+    'short-term-oversold',
+    'stochastic-oversold',
+    'lower-high-lower-low',
+    '20-day-high',
+    '52-week-high',
+    '52-week-low',
+    'fbo-almost',
+    'fbo-recent',
+    'tplus-volume',
+    'bullish-candlestick',
+    'candle-4r1g',
+    'gap-up',
+    'heikin-ashi-4g1r',
+    'heikin-ashi-4r1g',
+    'heikin-ashi-strong-buying-pressure',
+    'heikin-ashi-strong-selling-pressure',
+    'ikh-ha-strong-buying-pressure',
+    'ikh-ha-strong-selling-pressure',
+    'chaikin-money-flow-cmf',
+    'on-balance-volume-obv',
+    'silence-is-golden',
+    'volume-engulfing',
+    'volume-increase-30-percent',
+    'long-term-sideway',
+    'mid-term-sideway',
+    'short-term-sideway',
+    'gann-square-of-nine',
+    'ma-as-support',
+    'ma20-as-support',
+    'atr',
+    'risk-reward-ratio-chandelier-exit',
+    'sharpe-ratio',
+    'vwma-as-support',
     ]
 
     # dr = webdriver.Chrome()
@@ -359,7 +359,8 @@ def main():
     df1 = df1.add_prefix(prefix)
 
     df1 = df1.reset_index()
-    
+
+
 
     # Load to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
@@ -392,7 +393,7 @@ def main():
     url =[]
 
 
-    for i in range(1,3):
+    for i in range(1,49):
         website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
         url.append(website_url)
         
@@ -534,8 +535,13 @@ def main():
     stock_list['t0'] = stock_list['lacp']
     stock_list_new = stock_list[['date_new','name_new', 't0']]
     stock_list_new
+
+    del stock_list
     
+        
     df = df.merge(stock_list_new, how='left', left_on='name', right_on = 'name_new')
+
+    del stock_list_new
     
     df['day_name'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.day_name()
     df['month'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.strftime('%m')
@@ -643,7 +649,7 @@ while True:
     #     print ("Scoring run......")
     #     main()
     #     # time.sleep(30)
-    if now == now:
+    if now == "now":
         print ("Scoring run......")
         main()
     else:
