@@ -597,7 +597,7 @@ def main():
     
     #df_score = pd.concat(list_df)
     df_score.info()
-    df_score['id_scored'] = df_score['date'] + df_score['name'] + df_score['scenario']
+    df_score['id_scored'] = df_score['name'] + '_for_' +df_score['scenario']
     con_high = df_score['y_pred'] > 0.9
     con_med = df_score['y_pred'] > 0.8
     
