@@ -639,12 +639,13 @@ def main():
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-    if desired_time == now:
+    # if desired_time == now:
+    #     print ("Scoring run......")
+    #     main()
+    #     # time.sleep(30)
+    if now == now:
         print ("Scoring run......")
         main()
-        # time.sleep(30)
-    # if now == now:
-    #     main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
         # difference = desired_time - now
