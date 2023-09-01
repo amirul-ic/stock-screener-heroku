@@ -578,9 +578,7 @@ def main():
     
         # Set aside feature names
         feature_names = lgb_classifier.feature_name
-    
-        print (feature_names)
-    
+        
         df_staging = df.copy()
     
         df_staging['y_pred'] = lgb_classifier.predict_proba(df_staging[feature_names])[:,1]
