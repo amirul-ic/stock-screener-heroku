@@ -1,7 +1,7 @@
 import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
-desired_time = datetime.strptime("15:20", "%H:%M")
+desired_time = datetime.strptime("15:30", "%H:%M")
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
@@ -640,8 +640,9 @@ def main():
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
     if desired_time == now:
+        print ("Scoring run......")
         main()
-        time.sleep(30)
+        # time.sleep(30)
     # if now == now:
     #     main()
     else:
