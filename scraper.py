@@ -168,7 +168,7 @@ def main():
         print (url[cl])
         dr.get(url[cl])
 
-        time.sleep(1)
+        time.sleep(0.005)
         temp_list = [] 
         soup = BeautifulSoup(dr.page_source,'lxml')
         for table in soup.find_all('tbody'):
@@ -178,7 +178,7 @@ def main():
                         temp_list.append(j.text)
                         # print (temp_list)
         
-        time.sleep(1)
+        time.sleep(0.005)
                     
         while True:
             try:
@@ -186,7 +186,7 @@ def main():
                 dr.find_element(By.XPATH, "/html/body/div/div[5]/div/div[2]/div[1]/ul/li[9]/a").click()
                 # WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[5]/div/div[2]/div[1]/ul/li[9]/a"))).click()
                 soup1 = BeautifulSoup(dr.page_source,'lxml')
-                time.sleep(1)
+                time.sleep(0.005)
                 for table in soup1.find_all('tbody'):
                     for div_class in table.find_all('div', {'class':'d-flex flex-row align-items-center'}):
                         for i,j in enumerate (div_class.find_all('div')[1]):
