@@ -548,6 +548,9 @@ def main():
     
     df.set_index(['name', 'date'], inplace=True)
     df = df[feature_names]
+
+    df = df.astype(dataset_schema)
+    print(df.dtypes)
     
     for col in df.columns:
         if df[col].dtype == object or df[col].dtype.name == 'category':
