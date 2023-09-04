@@ -653,7 +653,7 @@ while True:
     #     print ("Scoring run......")
     #     main()
     #     # time.sleep(30)
-    if now == 'test':
+    if now == now:
         print (now)
         print ("Scoring run......")
         main()
