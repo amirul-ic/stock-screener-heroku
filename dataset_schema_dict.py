@@ -93,7 +93,7 @@ dataset_schema = {
   'volume-engulfing': 'object',
   'volume-increase-30-percent': 'object',
   'vwma-as-support': 'object',
-  't0': np.float32
+  't0': np.float32,
   'day_name': 'object',
   'month': 'object',
   'name': 'object',
