@@ -545,12 +545,16 @@ def main():
     
     df['day_name'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.day_name()
     df['month'] = pd.to_datetime(df['date'], format='%Y-%m-%d').dt.strftime('%m')
-    
-    df.set_index(['name', 'date'], inplace=True)
-    df = df[feature_names]
 
+    col_to_use = feature_names + ['name', 'date']
+    df = df[col_to_use]
+      
+    
     print (df.columns)
+    
     df = df.astype(dataset_schema)
+    df.set_index(['name', 'date'], inplace=True)
+    
     print(df.dtypes)
     
     for col in df.columns:
