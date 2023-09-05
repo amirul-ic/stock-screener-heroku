@@ -549,6 +549,7 @@ def main():
     df.set_index(['name', 'date'], inplace=True)
     df = df[feature_names]
 
+    print (df.columns)
     df = df.astype(dataset_schema)
     print(df.dtypes)
     
