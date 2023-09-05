@@ -96,6 +96,6 @@ dataset_schema = {
   't0': np.float32,
   'day_name': 'object',
   'month': 'object',
-  # 'name': 'object',
-  # 'date': 'object',
+  'name': 'object',
+  'date': 'object',
 }
