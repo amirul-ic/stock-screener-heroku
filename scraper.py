@@ -551,7 +551,8 @@ def main():
       
     
     print (df.columns)
-    
+
+    df.head(10).to_csv('df_sample_10.csv')
     df = df.astype(dataset_schema)
     df.set_index(['name', 'date'], inplace=True)
     
