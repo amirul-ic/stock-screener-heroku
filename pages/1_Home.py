@@ -9,8 +9,6 @@ import time
 print ("hello")
 # Import model
 
-d7_p3_model = pickle.load(open('C:/Users/TM36899/Desktop/20230806/python_model_objects/d7_p3_lgbmcv_model.pkl', "rb"))
-d3_p3_model = pickle.load(open('C:/Users/TM36899/Desktop/20230806/python_model_objects/d3_p3_lgbmcv_model.pkl', "rb"))
 
 df = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "d"])
 
