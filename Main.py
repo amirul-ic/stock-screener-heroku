@@ -65,32 +65,32 @@ try:
     # st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
     st.subheader('Distribution of Shortlisted Stocks :blue[by scenario]')
 
-    tab1, tab2 = st.tabs(["Distribution (by scenario)", "Altair native theme"])
-    # tab1 = st.tabs(["Distribution (by scenario)"])
+    # tab1, tab2 = st.tabs(["Distribution (by scenario)", "Altair native theme"])
+    tab1 = st.tabs(["Distribution (by scenario)"])
     with tab1:       
         dfa = pd.crosstab(df['date'], df['scenario'], dropna=False)
         st.bar_chart(dfa, width=10)
     
-    with tab2:
-        st.dataframe(df.style.highlight_max(axis=0))  # Same as st.write(df)
-        st.line_chart(df)
-            # data /= 1000000.0
-            # st.write("### Gross Agricultural Production ($B)", data.sort_index())
+    # with tab2:
+    #     st.dataframe(df.style.highlight_max(axis=0))  # Same as st.write(df)
+    #     st.line_chart(df)
+    #         # data /= 1000000.0
+    #         # st.write("### Gross Agricultural Production ($B)", data.sort_index())
 
-            # data = data.T.reset_index()
-            # data = pd.melt(data, id_vars=["index"]).rename(
-            #     columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-            # )
-            # chart = (
-            #     alt.Chart(data)
-            #     .mark_area(opacity=0.3)
-            #     .encode(
-            #         x="year:T",
-            #         y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-            #         color="Region:N",
-            #     )
-            # )
-            # st.altair_chart(chart, use_container_width=True)
+    #         # data = data.T.reset_index()
+    #         # data = pd.melt(data, id_vars=["index"]).rename(
+    #         #     columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
+    #         # )
+    #         # chart = (
+    #         #     alt.Chart(data)
+    #         #     .mark_area(opacity=0.3)
+    #         #     .encode(
+    #         #         x="year:T",
+    #         #         y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
+    #         #         color="Region:N",
+    #         #     )
+    #         # )
+    #         # st.altair_chart(chart, use_container_width=True)
 
 except :
     st.error(
