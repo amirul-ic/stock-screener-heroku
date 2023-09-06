@@ -62,7 +62,8 @@ try:
 
     st.markdown("***")
 
-    st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
+    # st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
+    st.subheader('Distribution of Shortlisted Stocks :blue[by scenario]')
 
     tab1, tab2 = st.tabs(["Streamlit theme (default)", "Altair native theme"])
     with tab1:       
