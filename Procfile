@@ -1,3 +1,3 @@
 worker: python scraper.py
-web: sh setup.sh && streamlit run main.py --server.port=$PORT
+web: sh setup.sh && streamlit run Main.py --server.port=$PORT
 
