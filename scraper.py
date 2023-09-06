@@ -2,6 +2,7 @@ import time
 from time import gmtime, strftime
 from datetime import datetime, timedelta
 desired_time = datetime.strptime("23:50", "%H:%M")
+import sys
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
 def main():
@@ -745,15 +746,15 @@ def main():
 
 while True:
     now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
-    # if desired_time == now:
-    #     print (now)
-    #     print ("Scoring run......")
-    #     main()
-    #     # time.sleep(30)
-    if now == now:
+    if desired_time == now:
         print (now)
         print ("Scoring run......")
         main()
+    #     # time.sleep(30)
+    # if now == now:
+    #     print (now)
+    #     print ("Scoring run......")
+    #     main()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
         # difference = desired_time - now
@@ -761,7 +762,7 @@ while True:
         # print (f'Sleeping for {seconds} seconds')
         # time.sleep(abs(seconds)*0.1)
         # break
-        exit()
+        sys.exit()
 
 
 
