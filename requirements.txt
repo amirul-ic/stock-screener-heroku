@@ -23,4 +23,5 @@ scipy
 
 ##cython==0.29.35
 
+holidays
 
