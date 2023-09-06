@@ -335,6 +335,9 @@ def main():
     # df = pd.read_csv(f'stock_list_{date_shortlisted}.csv', usecols=range(1,4))
     # df = df[df['date'] == date_shortlisted]
     df1 = df_indicator.copy()
+
+    del df_indicator
+    
     df1 = df1[['stock', 'date', 'indicator']]
 
     shortlisted1 = pd.crosstab([df1['date'], df1['stock']], df1['indicator'], dropna=False)
@@ -345,6 +348,9 @@ def main():
 
 
     df1 = shortlisted1.reindex(col_reindex, axis='columns').fillna(0)
+    
+    del shortlisted1
+    
     df1
 
     # Remove symbol, indication of if a stock is Shariah, etc. 
