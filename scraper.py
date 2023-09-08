@@ -240,7 +240,7 @@ def main():
         for row in rows:
             a = row['PartitionKey']
             row['PartitionKey'] = a
-            row['RowKey'] = row['stock']
+            row['RowKey'] = row['stock'] + '_for_' + row['indicator']
             ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
 
     table_service = TableService(connection_string=CONNECTION_STRING)
