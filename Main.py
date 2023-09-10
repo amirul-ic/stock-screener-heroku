@@ -12,6 +12,7 @@ from azure.cosmosdb.table.models import Entity
 CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
 table_service = TableService(connection_string=CONNECTION_STRING)
 
+#python -m streamlit run
 
 
 st.markdown("# Main page")
