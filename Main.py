@@ -50,7 +50,7 @@ try:
         st.write("This section list out the daily shortlisted stock")
 
     
-    a_date = st.date_input("Pick a date", (min_date, max_date)) 
+    a_date = st.date_input("Pick date(s)", (min_date, max_date)) 
     options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
 
     st.markdown(''' Note: 
