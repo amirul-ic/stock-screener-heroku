@@ -713,6 +713,8 @@ def main():
     choices = ['High', 'Medium']
     
     df_score['band'] = np.select(con, choices, "Low")
+
+    df_score = df_score[df_score['band'].isin(['High','Medium'])]
     
     ## Write to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
