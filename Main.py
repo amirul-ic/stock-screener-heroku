@@ -46,8 +46,8 @@ try:
 
     st.subheader(':blue[Daily Shortlisted Stocks]')
 
-    with st.container():
-        st.write("This section list out the daily shortlisted stock")
+    # with st.container():
+    #     st.write("This section list out the daily shortlisted stock")
 
     
     a_date = st.date_input("Pick date(s)", (min_date, max_date)) 
