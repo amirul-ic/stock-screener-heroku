@@ -28,7 +28,7 @@ def get_UN_data():
     # tasks = table_service.query_entities(
     #     'dailyshortlistedclean', filter="PartitionKey eq '2023-08-15'")
 
-    tasks = table_service.query_entities('dailyscored')
+    tasks = table_service.query_entities('dailyscorednew')
 
     df = pd.DataFrame(tasks)
     # df = df[['dailyraw_name', 'index', 'PartitionKey']]
