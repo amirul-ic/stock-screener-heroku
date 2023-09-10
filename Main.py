@@ -44,8 +44,12 @@ try:
     min_date = datetime.datetime(2023,1,1)
     max_date = datetime.date(2024,9,30)
 
-    st.markdown("***")
-    st.subheader('A header with _italics_ :blue[colors]')
+    st.subheader(':blue[Daily Shortlisted Stocks]')
+
+    with st.container():
+        st.write("This section list out the daily shortlisted stock")
+
+    
     a_date = st.date_input("Pick a date", (min_date, max_date)) 
     options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
     
