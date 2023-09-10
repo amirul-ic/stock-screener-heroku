@@ -13,8 +13,8 @@ print ("hello")
 df = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "d"])
 
 
-st.markdown("# Main page 🎈")
-st.sidebar.markdown("# Main page 🎈")
+# st.markdown("# Main page 🎈")
+# st.sidebar.markdown("# Main page 🎈")
 
 # Sidebar for navigate
 
