@@ -52,6 +52,15 @@ try:
     
     a_date = st.date_input("Pick a date", (min_date, max_date)) 
     options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
+
+    st.markdown(''' Note: 
+            The scenario is in the format of dx_py
+            - **:red[dx]** refers to the number of days
+            - **:blue[py]** refers to price percentage increase
+            
+            
+            e.g. d5_p3 indicates 'by 5 days, with increment of 3%
+            ''')
     
     if not options:
         st.error("Please select at least one scenario and one date")
