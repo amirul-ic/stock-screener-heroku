@@ -15,8 +15,8 @@ table_service = TableService(connection_string=CONNECTION_STRING)
 #python -m streamlit run
 
 
-st.markdown("# Main page")
-st.sidebar.markdown("# Main page")
+# st.markdown("# Main page")
+# st.sidebar.markdown("# Main page")
 
 # https://docs.streamlit.io/library/get-started/multipage-apps/create-a-multipage-app
 
