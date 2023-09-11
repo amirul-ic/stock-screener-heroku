@@ -719,7 +719,7 @@ def main():
     ## Write to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
     CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
-    TOLOADINTOTABLE = "dailyscored"
+    TOLOADINTOTABLE = "dailyscorednew"
     
     date_today = date.today().strftime('%Y-%m-%d')
     
