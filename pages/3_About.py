@@ -27,6 +27,7 @@ By using this stock screener, you acknowledge and agree to this disclaimer and a
 
 '''
 
+st.markdown(disclaimer)
 
 
 
