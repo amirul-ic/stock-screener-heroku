@@ -2,18 +2,52 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 
+st.title('Background')
 
 multi = ''' Hello everyone.  
 In late 2021, this project was initially an assignment for a machine learning subject in postgraduate school.  
-In September 2023, I decided to revive this project for the purpose of self-learning in areas such as cloud computing, data engineering, and model deployment.
+In September 2023, I revive this project for the purpose of self-learning in areas such as cloud computing, data engineering, and model deployment.
 '''
 st.markdown(multi)
+
+
+multi_premise = ''' 
+The premise behind this project i.e. screener is simple. We extract all the Bursa Malaysia stocks shortlisted by the freely available technical indicators, 
+and find the best possible combination which high chance of percentage increase within the specified time windows, without ever meeting the 
+cut loss percentage of -3%.  
+
+'''
+st.markdown(multi_premise)
+
+
+
+
+
+
 
 
 
 components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vRaN8PQ2krtWep60qucwxR6vRXRmXqfio7EHUEhnBdhCq-d7F44T3XYX5cLYd6RFQnjAE_3wzqV6wfT/embed?start=false&loop=false&delayms=60000", height=480)
 
+multi_space = ''' 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+st.markdown(multi_space)
 
 
 disclaimer = ''' **Disclaimer**
