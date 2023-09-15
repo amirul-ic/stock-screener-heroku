@@ -3,8 +3,8 @@ import streamlit as st
 
 
 multi = ''' Hello everyone.  
-In late 2021, this project began as an assignment for a machine learning subject in postgraduate school. 
-In September 2023, I decided to expand this project to engage in self-learning in areas such as cloud computing, data engineering, and model deployment.
+In late 2021, this project was initially an assignment for a machine learning subject in postgraduate school.  
+In September 2023, I decided to revive this project for the purpose of self-learning in areas such as cloud computing, data engineering, and model deployment.
 '''
 st.markdown(multi)
 
