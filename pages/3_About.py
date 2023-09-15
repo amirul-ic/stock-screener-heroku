@@ -17,6 +17,7 @@ The premise behind this project i.e. screener is simple. We extract all the Burs
 and find the best possible combination which high chance of percentage increase within the specified time windows, without ever meeting the 
 cut loss percentage of -3%.  
 
+
 '''
 st.markdown(multi_premise)
 
