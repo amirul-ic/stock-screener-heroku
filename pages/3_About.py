@@ -11,7 +11,7 @@ st.markdown(multi)
 
 
 
-components.iframe("https://onedrive.live.com/embed?resid=87A483DE2B2856E6%21207&amp;authkey=!ADTtB6Z3YhhN9jk&amp;em=2&amp;wdAr=1.7777777777777777", height=480)
+components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vRaN8PQ2krtWep60qucwxR6vRXRmXqfio7EHUEhnBdhCq-d7F44T3XYX5cLYd6RFQnjAE_3wzqV6wfT/embed?start=false&loop=false&delayms=60000", height=480)
 
 
 
