@@ -13,7 +13,7 @@ CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreenerami
 table_service = TableService(connection_string=CONNECTION_STRING)
 
 #python -m streamlit run
-#
+
 
 # st.markdown("# Main page")
 # st.sidebar.markdown("# Main page")
