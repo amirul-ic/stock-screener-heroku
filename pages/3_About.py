@@ -11,7 +11,7 @@ In September 2023, I revive this project for the purpose of self-learning in are
 '''
 st.markdown(multi)
 
-
+#
 multi_premise = ''' 
 The premise behind this project i.e. screener is simple. We extract all the Bursa Malaysia stocks shortlisted by the freely available technical indicators, 
 and find the best possible combination which high chance of percentage increase within the specified time windows, without ever meeting the 
