@@ -224,32 +224,32 @@ def main():
     print("The time of execution of above program is :",
         (end-start), "s")
 
-    ## write to Azure Table
-    from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
-    TOLOADINTOTABLE = "dailyshortlistedraw"
+    # ## write to Azure Table
+    # from azure.cosmosdb.table.tableservice import TableService 
+    # CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    # TOLOADINTOTABLE = "dailyshortlistedraw"
 
-    date_today = date.today().strftime('%Y-%m-%d')
+    # date_today = date.today().strftime('%Y-%m-%d')
 
-    def doLoad(ts):
-        df = df_indicator.copy()
-        df['date'] = date_error
-        df['PartitionKey'] = date_error
+    # def doLoad(ts):
+    #     df = df_indicator.copy()
+    #     df['date'] = date_error
+    #     df['PartitionKey'] = date_error
        
         
-        df= df.to_dict('records')
-        rows = [row for row in df]    
-        for row in rows:
-            a = row['PartitionKey']
-            row['PartitionKey'] = a
-            row['RowKey'] = row['stock'] + '_for_' + row['indicator']
-            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+    #     df= df.to_dict('records')
+    #     rows = [row for row in df]    
+    #     for row in rows:
+    #         a = row['PartitionKey']
+    #         row['PartitionKey'] = a
+    #         row['RowKey'] = row['stock'] + '_for_' + row['indicator']
+    #         ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
 
-    table_service = TableService(connection_string=CONNECTION_STRING)
-    table_service.create_table(TOLOADINTOTABLE)
-    doLoad(table_service)
+    # table_service = TableService(connection_string=CONNECTION_STRING)
+    # table_service.create_table(TOLOADINTOTABLE)
+    # doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    # print ("Done load to Azure Table")
 
     
 
@@ -371,104 +371,104 @@ def main():
 
 
 
-    # Load to Azure Table
-    from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
-    TOLOADINTOTABLE = "dailyshortlistedclean"
+    # # Load to Azure Table
+    # from azure.cosmosdb.table.tableservice import TableService 
+    # CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    # TOLOADINTOTABLE = "dailyshortlistedclean"
 
-    date_today = date.today().strftime('%Y-%m-%d')
+    # date_today = date.today().strftime('%Y-%m-%d')
 
-    def doLoad(ts):
-        df = df1.copy()
-        df[f'{prefix}date'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_error
+    # def doLoad(ts):
+    #     df = df1.copy()
+    #     df[f'{prefix}date'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y-%m-%d')
+    #     df['PartitionKey'] = date_error
         
-        df= df.to_dict('records')
-        rows = [row for row in df]    
-        for row in rows:
-            a = row['PartitionKey']
-            row['PartitionKey'] = a
-            row['RowKey'] = row[f'{prefix}name']
-            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+    #     df= df.to_dict('records')
+    #     rows = [row for row in df]    
+    #     for row in rows:
+    #         a = row['PartitionKey']
+    #         row['PartitionKey'] = a
+    #         row['RowKey'] = row[f'{prefix}name']
+    #         ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
 
-    table_service = TableService(connection_string=CONNECTION_STRING)
-    table_service.create_table(TOLOADINTOTABLE)
-    doLoad(table_service)
+    # table_service = TableService(connection_string=CONNECTION_STRING)
+    # table_service.create_table(TOLOADINTOTABLE)
+    # doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    # print ("Done load to Azure Table")
 
-    ## Stock Price
+    # ## Stock Price
 
-    url =[]
+    # url =[]
 
 
-    for i in range(1,49):
-        website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
-        url.append(website_url)
+    # for i in range(1,49):
+    #     website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
+    #     url.append(website_url)
         
-    print (url)
+    # print (url)
 
-    import datetime
-    frames = []
+    # import datetime
+    # frames = []
 
-    for link in url:
-        dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        # dr = requests.get(link)
-        # print (dr.page_source)
-        soup = BeautifulSoup(dr.page_source,'lxml')
-        tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
-        last_div = None
-        for last_div in tableMain:pass
-        if last_div:
-            table = last_div.getText()
-        df = pd.read_html(str(last_div), header=0)
-        df[0].rename(index= str, inplace = True)
-        frames.append(df[0].assign(date=datetime.datetime(2022, 1, 4)))
+    # for link in url:
+    #     dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    #     # dr = requests.get(link)
+    #     # print (dr.page_source)
+    #     soup = BeautifulSoup(dr.page_source,'lxml')
+    #     tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
+    #     last_div = None
+    #     for last_div in tableMain:pass
+    #     if last_div:
+    #         table = last_div.getText()
+    #     df = pd.read_html(str(last_div), header=0)
+    #     df[0].rename(index= str, inplace = True)
+    #     frames.append(df[0].assign(date=datetime.datetime(2022, 1, 4)))
 
-    # 3) Append all the information into a single data frame.
+    # # 3) Append all the information into a single data frame.
         
-    stock_list = pd.concat(frames)
-    stock_list = stock_list[['Name', 'Code', 'LACP']]
-    stock_list.columns = ['name', 'code', 'lacp']
+    # stock_list = pd.concat(frames)
+    # stock_list = stock_list[['Name', 'Code', 'LACP']]
+    # stock_list.columns = ['name', 'code', 'lacp']
 
-    stock_list['date'] = date_error
+    # stock_list['date'] = date_error
 
-    end = time.time()
+    # end = time.time()
 
-    stock_list.info()
+    # stock_list.info()
 
-    print("The time of execution of above program is :",
-        (end-start), "s")
+    # print("The time of execution of above program is :",
+    #     (end-start), "s")
 
     
-    dr.quit()
+    # dr.quit()
 
 
 
-    from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
-    TOLOADINTOTABLE = "dailystockprice"
+    # from azure.cosmosdb.table.tableservice import TableService 
+    # CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    # TOLOADINTOTABLE = "dailystockprice"
 
-    date_today = date.today().strftime('%Y-%m-%d')
+    # date_today = date.today().strftime('%Y-%m-%d')
 
-    def doLoad(ts):
-        df = stock_list.copy()
-        df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_error
+    # def doLoad(ts):
+    #     df = stock_list.copy()
+    #     df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
+    #     df['PartitionKey'] = date_error
         
-        df= df.to_dict('records')
-        rows = [row for row in df]    
-        for row in rows:
-            a = row['PartitionKey']
-            row['PartitionKey'] = a
-            row['RowKey'] = row[f'name']
-            ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
+    #     df= df.to_dict('records')
+    #     rows = [row for row in df]    
+    #     for row in rows:
+    #         a = row['PartitionKey']
+    #         row['PartitionKey'] = a
+    #         row['RowKey'] = row[f'name']
+    #         ts.insert_or_replace_entity(TOLOADINTOTABLE, row)
 
-    table_service = TableService(connection_string=CONNECTION_STRING)
-    table_service.create_table(TOLOADINTOTABLE)
-    doLoad(table_service)
+    # table_service = TableService(connection_string=CONNECTION_STRING)
+    # table_service.create_table(TOLOADINTOTABLE)
+    # doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    # print ("Done load to Azure Table")
 
     ###########################################################################################################
     ##### Score model
@@ -561,7 +561,7 @@ def main():
     
     print (df.columns)
 
-    df.head(10).to_csv('df_sample_10.csv')
+
     #df = df.astype(dataset_schema)
     df = df.astype({
           '20-day-high': 'object',
@@ -707,7 +707,7 @@ def main():
     df_score.info()
     df_score['id_scored'] = df_score['name'] + '_for_' +df_score['scenario']
     con_high = df_score['y_pred'] > 0.9
-    con_med = df_score['y_pred'] > 0.8
+    con_med = df_score['y_pred'] > 0.7
     
     con = [con_high, con_med]
     
