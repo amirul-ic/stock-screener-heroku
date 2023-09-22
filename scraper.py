@@ -468,6 +468,7 @@ def main():
     doLoad(table_service)
 
     print ("Done load to Azure Table")
+    
 
     ###########################################################################################################
     ##### Score model
@@ -758,6 +759,7 @@ while True:
         print (now)
         print ("Scoring run......")
         main()
+        print ("Done scoring......")
         sys.exit()
     else:
         # now = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
