@@ -249,7 +249,8 @@ def main():
     doLoad(table_service)
 
     print ("Done load shortlisted raw to Azure Table")
-
+    
+    df.clear()
     
 
     ##clean and write to Azure Table Again
@@ -395,7 +396,8 @@ def main():
     doLoad(table_service)
 
     print ("Done load shortlisted clean to Azure Table")
-
+    df.clear()
+    
     ## Stock Price
 
     url =[]
@@ -468,7 +470,8 @@ def main():
     doLoad(table_service)
 
     print ("Done load to stock price to Azure Table")
-    
+
+    df.clear()
 
     ###########################################################################################################
     ##### Score model
@@ -702,8 +705,10 @@ def main():
         # list_df.append(df_concat)
         df_score = pd.concat([df_score, df_concat], ignore_index=True)
     
+    del df
+    del df_staging
     
-    #df_score = pd.concat(list_df)
+
     df_score.info()
     df_score['id_scored'] = df_score['name'] + '_for_' +df_score['scenario']
     con_high = df_score['y_pred'] > 0.9
