@@ -248,7 +248,7 @@ def main():
     table_service.create_table(TOLOADINTOTABLE)
     doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    print ("Done load shortlisted raw to Azure Table")
 
     
 
@@ -394,7 +394,7 @@ def main():
     table_service.create_table(TOLOADINTOTABLE)
     doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    print ("Done load shortlisted clean to Azure Table")
 
     ## Stock Price
 
@@ -467,7 +467,7 @@ def main():
     table_service.create_table(TOLOADINTOTABLE)
     doLoad(table_service)
 
-    print ("Done load to Azure Table")
+    print ("Done load to stock price to Azure Table")
     
 
     ###########################################################################################################
@@ -742,7 +742,7 @@ def main():
     table_service.create_table(TOLOADINTOTABLE)
     doLoad(table_service)
     
-    print ("Done load to Azure Table")
+    print ("Done load scored data to Azure Table")
 
 
     ##################################################################################################################################################################
