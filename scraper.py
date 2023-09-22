@@ -250,7 +250,7 @@ def main():
 
     print ("Done load shortlisted raw to Azure Table")
     
-    df.clear()
+    
     
 
     ##clean and write to Azure Table Again
@@ -396,7 +396,7 @@ def main():
     doLoad(table_service)
 
     print ("Done load shortlisted clean to Azure Table")
-    df.clear()
+   
     
     ## Stock Price
 
@@ -471,7 +471,7 @@ def main():
 
     print ("Done load to stock price to Azure Table")
 
-    df.clear()
+
 
     ###########################################################################################################
     ##### Score model
