@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 
-st.title('Background')
+st.subheader(':blue[Daily Shortlisted Stocks]')
 
 multi = ''' Hello everyone.  
 
