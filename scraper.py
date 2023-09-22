@@ -704,6 +704,7 @@ def main():
 
         # list_df.append(df_concat)
         df_score = pd.concat([df_score, df_concat], ignore_index=True)
+        del df_concat
     
     del df
     del df_staging
