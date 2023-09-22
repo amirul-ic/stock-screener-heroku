@@ -72,7 +72,7 @@ try:
     Note: 
     The scenario is in the format of dx_py
     - **:red[dx]** refers to the number of days
-    - **:blue[py]** refers to price percentage increase
+    - **:blue[py]** refers to price percentage increase   
     e.g. d5_p3 indicates 'by 5 days, with increment of 3%
     ''')
     
