@@ -208,7 +208,8 @@ def main():
 
         df_indicator = pd.concat([df_indicator, df_staging], ignore_index=True)
 
-
+    del df_staging
+    
     # 3) Append all the information into a single data frame.
         
 
