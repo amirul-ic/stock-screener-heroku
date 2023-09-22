@@ -3,6 +3,7 @@ from time import gmtime, strftime
 from datetime import datetime, timedelta
 desired_time = datetime.strptime("23:50", "%H:%M")
 import sys
+date_error = '2023-09-21'
 
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
@@ -212,7 +213,7 @@ def main():
     # 3) Append all the information into a single data frame.
         
 
-    df_indicator['date'] = date.today()
+    df_indicator['date'] = date_error
     df_indicator['stock'] = df_indicator['stock'].str.replace('N/A','NA')
     df_indicator.to_csv(f'stock_list_{date.today()}.csv')
     df_indicator.info()
@@ -232,9 +233,9 @@ def main():
 
     def doLoad(ts):
         df = df_indicator.copy()
-        df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_today
-        # df['PartitionKey'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y%m%d').astype('int')
+        df['date'] = date_error
+        df['PartitionKey'] = date_error
+       
         
         df= df.to_dict('records')
         rows = [row for row in df]    
@@ -380,7 +381,7 @@ def main():
     def doLoad(ts):
         df = df1.copy()
         df[f'{prefix}date'] = pd.to_datetime(df[f'{prefix}date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_today
+        df['PartitionKey'] = date_error
         
         df= df.to_dict('records')
         rows = [row for row in df]    
@@ -430,7 +431,7 @@ def main():
     stock_list = stock_list[['Name', 'Code', 'LACP']]
     stock_list.columns = ['name', 'code', 'lacp']
 
-    stock_list['date'] = date.today()
+    stock_list['date'] = date_error
 
     end = time.time()
 
@@ -453,7 +454,7 @@ def main():
     def doLoad(ts):
         df = stock_list.copy()
         df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_today
+        df['PartitionKey'] = date_error
         
         df= df.to_dict('records')
         rows = [row for row in df]    
@@ -726,7 +727,7 @@ def main():
     def doLoad(ts):
         df = df_score.copy()
         df[f'date'] = pd.to_datetime(df[f'date']).dt.strftime('%Y-%m-%d')
-        df['PartitionKey'] = date_today
+        df['PartitionKey'] = date_error
         
         df= df.to_dict('records')
         rows = [row for row in df]    
