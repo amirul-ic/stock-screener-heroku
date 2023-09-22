@@ -66,8 +66,18 @@ try:
 
 
     
-    options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
+    df = df[(df['date'] >= a_date[0]) & (df['date'] <= a_date[1])]
+ 
+    options_band = st.multiselect("Choose confidence band", sorted(df['band'].unique()))
+    df = df[df['band'].isin(options_band)]
 
+    options = st.multiselect("Choose scenario", sorted(df['scenario'].unique()))
+    df = df[df['scenario'].isin(options)]
+
+        
+    st.dataframe(df, width=1000000) 
+
+    
     st.markdown(''' 
     Note: 
     The scenario is in the format of dx_py
@@ -76,16 +86,17 @@ try:
     e.g. d5_p3 indicates 'by 5 days, with increment of 3%
     ''')
     
-    if not options:
-        st.error("Please select at least one scenario and one date")
-    else:
-        data = df[(df['date'] >= a_date[0]) & (df['date'] <= a_date[1])]
-        data = data[data['scenario'].isin(options)]
+    # if not options:
+    #     st.error("Please select at least one scenario, one date and one confidence band")
+    # else:
+    #     # data = df[(df['date'] >= a_date[0]) & (df['date'] <= a_date[1])]
+    #     # data = data[data['scenario'].isin(options)]
+    #     data = df
 
         
         
-        st.text("")    
-        st.dataframe(data, width=1000000) 
+    #     st.text("")    
+    #     st.dataframe(data, width=1000000) 
 
 
     # st.markdown("***")
@@ -123,7 +134,7 @@ try:
 except :
     st.error(
         """
-        **Please select date end date**
+        **Please select at least one scenario, one date and one confidence band**
     """
     )
 
