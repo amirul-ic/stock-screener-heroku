@@ -702,6 +702,13 @@ def main():
         print ('Scoring for {i}')
         
         df_concat = df_staging[['name', 'date', 'y_pred', 'scenario']]
+        con_high = df_concat['y_pred'] > 0.9
+        con_med = df_concat['y_pred'] > 0.8
+        con = [con_high, con_med]
+        choices = ['High', 'Medium']
+        df_concat['band'] = np.select(con, choices, "Low")
+        df_concat = df_concat[df_concat['band'].isin(['High','Medium'])]
+        
 
         # list_df.append(df_concat)
         df_score = pd.concat([df_score, df_concat], ignore_index=True)
@@ -713,16 +720,16 @@ def main():
 
     df_score.info()
     df_score['id_scored'] = df_score['name'] + '_for_' +df_score['scenario']
-    con_high = df_score['y_pred'] > 0.9
-    con_med = df_score['y_pred'] > 0.8
+    # con_high = df_score['y_pred'] > 0.9
+    # con_med = df_score['y_pred'] > 0.8
     
-    con = [con_high, con_med]
+    # con = [con_high, con_med]
     
-    choices = ['High', 'Medium']
+    # choices = ['High', 'Medium']
     
-    df_score['band'] = np.select(con, choices, "Low")
+    # df_score['band'] = np.select(con, choices, "Low")
 
-    df_score = df_score[df_score['band'].isin(['High','Medium'])]
+    # df_score = df_score[df_score['band'].isin(['High','Medium'])]
     
     ## Write to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
