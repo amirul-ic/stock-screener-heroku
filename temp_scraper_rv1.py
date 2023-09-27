@@ -3,7 +3,7 @@ from time import gmtime, strftime
 from datetime import datetime, timedelta
 desired_time = datetime.strptime("23:50", "%H:%M")
 import sys
-date_error = '2023-09-21'
+date_error = '2023-09-27'
 
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
 
