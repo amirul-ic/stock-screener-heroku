@@ -707,7 +707,7 @@ def main():
     df_score.info()
     df_score['id_scored'] = df_score['name'] + '_for_' +df_score['scenario']
     con_high = df_score['y_pred'] > 0.9
-    con_med = df_score['y_pred'] > 0.7
+    con_med = df_score['y_pred'] > 0.8
     
     con = [con_high, con_med]
     
