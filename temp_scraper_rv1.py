@@ -399,37 +399,23 @@ def main():
 
     # Stock Price
 
-    url =[]
+    temp_list =[]
+    import string
+    for char in string.ascii_uppercase:
+        dr.get(f'https://www.thestar.com.my/business/martketwatch/Stock-List?alphabet={char}')
+        soup = BeautifulSoup(dr.page_source, 'lxml')
+        for table in soup.find_all('table', {'id': 'marketwatchtable'}):
+            for tr in table.find_all('tr', {'class':'linedlist'}):
+                temp_list.append(tr.text)
+        time.sleep(0.5)
 
 
-    for i in range(1,49):
-        website_url = (f'https://www.bursamalaysia.com/market_information/equities_prices?page={i}&per_page=50')
-        url.append(website_url)
-        
-    print (url)
-
-    import datetime
-    frames = []
-
-    for link in url:
-        dr.get(link)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        # dr = requests.get(link)
-        # print (dr.page_source)
-        soup = BeautifulSoup(dr.page_source,'lxml')
-        tableMain = soup.find_all('table', {'class':'table datatable-striped text-center equity_prices_table datatable-with-sneak-peek js-anchor-price-table d-none d-lg-block dataTable no-footer'})
-        last_div = None
-        for last_div in tableMain:pass
-        if last_div:
-            table = last_div.getText()
-        df = pd.read_html(str(last_div), header=0)
-        df[0].rename(index= str, inplace = True)
-        frames.append(df[0].assign(date=datetime.datetime(2022, 1, 4)))
-
-    # 3) Append all the information into a single data frame.
-        
-    stock_list = pd.concat(frames)
-    stock_list = stock_list[['Name', 'Code', 'LACP']]
-    stock_list.columns = ['name', 'code', 'lacp']
+    stock_list = pd.DataFrame(temp_list)
+    temp_list = []
+    
+    stock_list[['name', 'open', 'high', 'low', 'lacp', 'others', 'others1']]= stock_list[0].str.split(' ', expand=True)
+    stock_list = stock_list[['name', 'open', 'high', 'low', 'lacp']]
+    stock_list = stock_list.drop_duplicates(subset=['name', 'lacp'], keep='first')
 
     stock_list['date'] = date_error
 
