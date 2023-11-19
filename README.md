@@ -1,4 +1,4 @@
-# Short Term Stock Screener
+# Screener For Short Term Trading
 Hello!
 
 The premise behind this screener is simple. We extract all the Bursa Malaysia stocks shortlisted by the freely available technical indicators, 
