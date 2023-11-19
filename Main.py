@@ -9,48 +9,25 @@ import datetime
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 
-# CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+## CONNECTION_STRING = "azure table connection string"
 table_service = TableService(connection_string=CONNECTION_STRING)
-
-#python -m streamlit run
-#kkkk
-
-# st.markdown("# Main page")
-# st.sidebar.markdown("# Main page")
-
-# https://docs.streamlit.io/library/get-started/multipage-apps/create-a-multipage-app
 
 
 # @st.cache_data
 def get_UN_data():
-    # df = pd.read_csv(r"C:\Users\TM36899\Desktop\20230806\daily_shortlisted_stock.csv")
-
-    # tasks = table_service.query_entities(
-    #     'dailyshortlistedclean', filter="PartitionKey eq '2023-08-15'")
-
     tasks = table_service.query_entities('dailyscorednew')
-
     df = pd.DataFrame(tasks)
     # df = df[['dailyraw_name', 'index', 'PartitionKey']]
     df = df[['date', 'name', 'scenario', 'band']]
-    df = df[df['band'].isin(['High','Medium'])]
-    
+    df = df[df['band'].isin(['High','Medium'])]   
     return df
 
 try:
     df = get_UN_data()
     df['date'] = pd.to_datetime(df['date']).dt.date
     
-    # min_date = datetime.datetime(2023,1,1)
-    # max_date = datetime.date(2024,9,30)
-    # a_date = st.date_input("Pick date(s)", (min_date, max_date)) 
-
     st.subheader(':blue[Daily Shortlisted Stocks]')
-
-    # with st.container():
-    #     st.write("This section list out the daily shortlisted stock")
-
-    
+ 
     today = datetime.datetime.now()
     current_year = today.year
     sep_7 = datetime.date(current_year, 9, 7)
@@ -63,7 +40,6 @@ try:
         dec_31,
         format="YYYY/MM/DD",
     )
-
 
     
     df = df[(df['date'] >= a_date[0]) & (df['date'] <= a_date[1])]
@@ -85,51 +61,7 @@ try:
     - **:blue[py]** refers to price percentage increase   
     e.g. d5_p3 indicates 'by 5 days, with increment of 3%
     ''')
-    
-    # if not options:
-    #     st.error("Please select at least one scenario, one date and one confidence band")
-    # else:
-    #     # data = df[(df['date'] >= a_date[0]) & (df['date'] <= a_date[1])]
-    #     # data = data[data['scenario'].isin(options)]
-    #     data = df
 
-        
-        
-    #     st.text("")    
-    #     st.dataframe(data, width=1000000) 
-
-
-    # st.markdown("***")
-
-    # # st.subheader('A header with _italics_ :blue[colors] and emojis :sunglasses:')
-    # st.subheader('Distribution of Shortlisted Stocks :blue[by scenario]')
-
-    # # tab1, tab2 = st.tabs(["Distribution (by scenario)", "Altair native theme"])
-    # tab1 = st.tabs(["Distribution (by scenario)"])
-    # with tab1:       
-    #     dfa = pd.crosstab(df['date'], df['scenario'], dropna=False)
-    #     st.bar_chart(dfa, width=10)
-    
-    # # with tab2:
-    # #     st.dataframe(df.style.highlight_max(axis=0))  # Same as st.write(df)
-    # #     st.line_chart(df)
-    # #         # data /= 1000000.0
-    # #         # st.write("### Gross Agricultural Production ($B)", data.sort_index())
-
-    # #         # data = data.T.reset_index()
-    # #         # data = pd.melt(data, id_vars=["index"]).rename(
-    # #         #     columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-    # #         # )
-    # #         # chart = (
-    # #         #     alt.Chart(data)
-    # #         #     .mark_area(opacity=0.3)
-    # #         #     .encode(
-    # #         #         x="year:T",
-    # #         #         y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-    # #         #         color="Region:N",
-    # #         #     )
-    # #         # )
-    # #         # st.altair_chart(chart, use_container_width=True)
 
 except :
     st.error(
