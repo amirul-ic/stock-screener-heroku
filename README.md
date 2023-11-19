@@ -5,7 +5,7 @@ The premise behind this screener is simple. We extract all the Bursa Malaysia st
 and find the best possible combination which high chance of percentage increase within the specified time windows, without ever meeting the 
 cut loss percentage of -3%.  
 
-components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vRaN8PQ2krtWep60qucwxR6vRXRmXqfio7EHUEhnBdhCq-d7F44T3XYX5cLYd6RFQnjAE_3wzqV6wfT/embed?start=false&loop=false&delayms=60000", height=480)
+<img width="30px" src="./StockScreener.jpg" alt="design png" />
 
 The app can be accessed [here](https://stock-screener-amirul-0e3d96487623.herokuapp.com/). 
 
