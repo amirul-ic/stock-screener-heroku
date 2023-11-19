@@ -1,7 +1,7 @@
 # Short Term Stock Screener
 Hello!
 
-The premise behind this screeer is simple. We extract all the Bursa Malaysia stocks shortlisted by the freely available technical indicators, 
+The premise behind this screener is simple. We extract all the Bursa Malaysia stocks shortlisted by the freely available technical indicators, 
 and find the best possible combination which high chance of percentage increase within the specified time windows, without ever meeting the 
 cut loss percentage of -3%.  
 
