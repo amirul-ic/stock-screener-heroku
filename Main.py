@@ -13,6 +13,12 @@ from azure.cosmosdb.table.models import Entity
 ## CONNECTION_STRING = "azure table connection string"
 table_service = TableService(connection_string=os.getenv("CONNECTION_STRING"))
 
+st.markdown(''' 
+Note: 
+Amirul test
+''')
+
+
 
 # @st.cache_data
 def get_UN_data():
