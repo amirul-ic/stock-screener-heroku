@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import holidays
+import os
 
 ##################
 ## Get Business Day ##
@@ -71,7 +72,7 @@ from azure.cosmosdb.table.tableservice import TableService
 from azure.data.tables import TableClient
 from azure.cosmosdb.table.models import Entity
 
-CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+CONNECTION_STRING = os.getenv("CONNECTION_STRING")
 table_service = TableService(connection_string=CONNECTION_STRING)
 
 table_client = TableClient.from_connection_string(conn_str=CONNECTION_STRING, table_name="dailystockprice")
