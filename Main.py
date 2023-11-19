@@ -5,12 +5,13 @@ import pandas as pd
 import numpy as np
 import time
 import datetime
+import os
 
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 
 ## CONNECTION_STRING = "azure table connection string"
-table_service = TableService(connection_string=CONNECTION_STRING)
+table_service = TableService(connection_string=os.getenv("CONNECTION_STRING"))
 
 
 # @st.cache_data
