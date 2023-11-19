@@ -5,6 +5,8 @@ desired_time = datetime.strptime("23:50", "%H:%M")
 import sys
 
 # desired_time = datetime.now().strptime(strftime("%H:%M", gmtime()), "%H:%M")
+# Azure Table Connection String
+CONNECTION_STRING = os.getenv("CONNECTION_STRING")
 
 def main():
     import timeit
@@ -227,7 +229,7 @@ def main():
 
     ## write to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
+    CONNECTION_STRING = os.getenv("CONNECTION_STRING")
     TOLOADINTOTABLE = "dailyshortlistedraw"
 
     date_today = date.today().strftime('%Y-%m-%d')
@@ -375,7 +377,6 @@ def main():
 
     # Load to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
     TOLOADINTOTABLE = "dailyshortlistedclean"
 
     date_today = date.today().strftime('%Y-%m-%d')
@@ -440,7 +441,6 @@ def main():
 
 
     from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
     TOLOADINTOTABLE = "dailystockprice"
 
     date_today = date.today().strftime('%Y-%m-%d')
@@ -725,7 +725,6 @@ def main():
     
     ## Write to Azure Table
     from azure.cosmosdb.table.tableservice import TableService 
-    CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=stockscreeneramirul;AccountKey=iMA+0QKbFkLtHQMoNzeHk/XAsqRLApK2Qi3T7hk52niWnJYKITy3YfoJ/TtBoiEi4oa4gfn4AUHw+ASt5zu/gQ==;EndpointSuffix=core.windows.net"
     TOLOADINTOTABLE = "dailyscorednew"
     
     date_today = date.today().strftime('%Y-%m-%d')
