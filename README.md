@@ -13,17 +13,15 @@ I hope it is as useful to you as much as the fun I'm having developing it.
 
 Thank you.
 
-
-
-
-
-
-
-
-
-
-
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 **Disclaimer**
 
