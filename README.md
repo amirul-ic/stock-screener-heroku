@@ -17,6 +17,14 @@ Thank you.
 
 
 
+
+
+
+
+
+
+
+
 **Disclaimer**
 
 This stock screener tool is provided solely for personal and educational purposes. It is not intended, nor should it be considered, as a source of financial advice or a tool for making investment decisions. The information and data presented by this stock screener are for informational purposes only and should not be used as a basis for any financial actions.
