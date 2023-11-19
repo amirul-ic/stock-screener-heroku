@@ -10,13 +10,8 @@ import os
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 
-## CONNECTION_STRING = "azure table connection string"
+## CONNECTION_STRING = azure_table_connection_string
 table_service = TableService(connection_string=os.getenv("CONNECTION_STRING"))
-
-st.markdown(''' 
-Note: 
-Amirul test
-''')
 
 
 
