@@ -35,12 +35,12 @@ try:
 
     today = datetime.datetime.now()
     current_year = today.year
-    sep_7 = datetime.date(current_year, 9, 5)
+    sep_7 = datetime.date(2023, 9, 5)
     dec_31 = datetime.date(current_year, 12, 31)
 
     a_date = st.date_input(
         "Select the shortlisted date",
-        (sep_7, datetime.date(current_year, 9, 7)),
+        (sep_7, datetime.date(2023, 9, 7)),
         sep_7,
         dec_31,
         format="YYYY/MM/DD",
